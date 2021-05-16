@@ -14,14 +14,17 @@
     <main>
         <div class="position-relative top-50 start-50 translate-middle bg-light me-5 pt-5 pb-2">
             <div class="row position-relative text-center">
-                <div class="col d-flex justify-content-center">
+                <div class="col d-flex flex-column align-items-center">
                     <button id="rock" class="text-light btn btn-primary player-choice-btn" href="#"><i class="bi bi-heptagon-fill"></i></button>
+                    <div id="rock-choice-indicator" class="fs-1"></div>
                 </div>
-                <div class="col d-flex justify-content-center">
+                <div class="col d-flex flex-column align-items-center">
                     <button id="paper" class="text-light btn btn-primary player-choice-btn"href="#"><i class="bi bi-file-earmark-fill"></i></button>
+                    <div id="paper-choice-indicator" class="fs-1"></div>
                 </div>
-                <div class="col d-flex justify-content-center">
+                <div class="col d-flex flex-column align-items-center">
                     <button id="scissors" class="text-light btn btn-primary player-choice-btn"href="#"><i class="bi bi-scissors"></i></button>
+                    <div id="scissors-choice-indicator" class="fs-1"></div>
                 </div>
                 <div class="col-12 mt-5">
                     <h2 class="text-muted">Scoreboard</h2>
@@ -36,6 +39,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div id="result-notification" class="alert alert-info mx-5 mt-5" role="alert">
+                When you start playing, this box will let you know who won the last round.
             </div>
         </div>
     </main>
