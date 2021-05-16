@@ -1,20 +1,26 @@
 const playerChoiceButtons = document.querySelectorAll('.player-choice-btn');
+
 const playerScore = document.querySelector('#player-score');
 const computerScore = document.querySelector('#computer-score');
+
+const playerRoundWinMessages = ['Nice one! Keep it up.', 'Holy cow! How did you do that?!', 'You didn\'t even break a sweat! Good job!'];
+const computerRoundWinMessages = ['Uh oh. Who turned on the lag switch?', 'Yikes! You really flopped that one.', 'There\'s always next time...'];
+const roundDrawMessages = ['Stalemate.', 'Looks like we got ourselves a good ol\' fashioned stand off...', 'When an unstoppable force meets an immovable object...'];
+
 const resultNotification = document.querySelector('#result-notification');
-const playerRoundWinMessages = ["Nice one! Keep it up.", "Holy cow! How did you do that?!", "You didn't even break a sweat! Good job!"];
-const computerRoundWinMessages = ["Uh oh. Who turned on the lag switch?", "Yikes! You really flopped that one.", "There's always next time..."];
-const roundDrawMessages = ["Stalemate.", "Looks like we got ourselves a good ol' fashioned stand off...", "When an unstoppable force meets an immovable object..."];
+
 const rockChoiceIndicator = document.querySelector('#rock-choice-indicator');
 const paperChoiceIndicator = document.querySelector('#paper-choice-indicator');
 const scissorsChoiceIndicator = document.querySelector('#scissors-choice-indicator');
 const choiceIndicators = [rockChoiceIndicator, paperChoiceIndicator, scissorsChoiceIndicator];
+
 const computerIcon = '<i class="bi bi-cpu-fill"></i>';
 const playerIcon = '<i class="bi bi-person-fill"></i>';
+
 const resetButton = document.querySelector('#reset-btn');
 
 playerChoiceButtons.forEach(button => button.addEventListener('click', () => {
-    playRound(button.id, random(["rock", "paper", "scissors"]));
+    playRound(button.id, random(['rock', 'paper', 'scissors']));
 }));
 
 resetButton.addEventListener('click', resetScores);
@@ -55,22 +61,22 @@ function resetEachInnerHTML(array) {
 }
 
 function resetScores() {
-    playerScore.textContent = "0";
-    computerScore.textContent = "0";
+    playerScore.textContent = '0';
+    computerScore.textContent = '0';
 }
 
 function playRound(playerChoice, computerChoice) {
     resultNotification.classList.remove('alert-info');
 
     switch(true) {
-        case playerChoice === "rock" && computerChoice === "rock":
+        case playerChoice === 'rock' && computerChoice === 'rock':
             resultNotification.textContent = random(roundDrawMessages);
             setAlertWarning(resultNotification);
             resetEachInnerHTML(choiceIndicators);
             addChildIcon(rockChoiceIndicator, playerIcon);
             addChildIcon(rockChoiceIndicator, computerIcon);
             break;
-        case playerChoice === "rock" && computerChoice === "paper":
+        case playerChoice === 'rock' && computerChoice === 'paper':
             computerScore.textContent = (Number(computerScore.textContent) + 1).toString();
             resultNotification.textContent = random(computerRoundWinMessages);
             setAlertDanger(resultNotification);
@@ -78,7 +84,7 @@ function playRound(playerChoice, computerChoice) {
             addChildIcon(rockChoiceIndicator, playerIcon);
             addChildIcon(paperChoiceIndicator, computerIcon);
             break;
-        case playerChoice === "rock" && computerChoice === "scissors":
+        case playerChoice === 'rock' && computerChoice === 'scissors':
             playerScore.textContent = (Number(playerScore.textContent) + 1).toString();
             resultNotification.textContent = random(playerRoundWinMessages);
             setAlertSuccess(resultNotification);
@@ -86,7 +92,7 @@ function playRound(playerChoice, computerChoice) {
             addChildIcon(rockChoiceIndicator, playerIcon);
             addChildIcon(scissorsChoiceIndicator, computerIcon);
             break;
-        case playerChoice === "paper" && computerChoice === "rock":
+        case playerChoice === 'paper' && computerChoice === 'rock':
             playerScore.textContent = (Number(playerScore.textContent) + 1).toString();
             resultNotification.textContent = random(playerRoundWinMessages);
             setAlertSuccess(resultNotification);
@@ -94,14 +100,14 @@ function playRound(playerChoice, computerChoice) {
             addChildIcon(paperChoiceIndicator, playerIcon);
             addChildIcon(rockChoiceIndicator, computerIcon);
             break;
-        case playerChoice === "paper" && computerChoice === "paper":
+        case playerChoice === 'paper' && computerChoice === 'paper':
             resultNotification.textContent = random(roundDrawMessages);
             setAlertWarning(resultNotification);
             resetEachInnerHTML(choiceIndicators);
             addChildIcon(paperChoiceIndicator, playerIcon);
             addChildIcon(paperChoiceIndicator, computerIcon);
             break;
-        case playerChoice === "paper" && computerChoice === "scissors":
+        case playerChoice === 'paper' && computerChoice === 'scissors':
             computerScore.textContent = (Number(computerScore.textContent) + 1).toString();
             resultNotification.textContent = random(computerRoundWinMessages);
             setAlertDanger(resultNotification);
@@ -109,7 +115,7 @@ function playRound(playerChoice, computerChoice) {
             addChildIcon(paperChoiceIndicator, playerIcon);
             addChildIcon(scissorsChoiceIndicator, computerIcon);
             break;
-        case playerChoice === "scissors" && computerChoice === "rock":
+        case playerChoice === 'scissors' && computerChoice === 'rock':
             computerScore.textContent = (Number(computerScore.textContent) + 1).toString();
             resultNotification.textContent = random(computerRoundWinMessages);
             setAlertDanger(resultNotification);
@@ -117,7 +123,7 @@ function playRound(playerChoice, computerChoice) {
             addChildIcon(scissorsChoiceIndicator, playerIcon);
             addChildIcon(rockChoiceIndicator, computerIcon);
             break;
-        case playerChoice === "scissors" && computerChoice === "paper":
+        case playerChoice === 'scissors' && computerChoice === 'paper':
             playerScore.textContent = (Number(playerScore.textContent) + 1).toString();
             resultNotification.textContent = random(playerRoundWinMessages);
             setAlertSuccess(resultNotification);
@@ -125,7 +131,7 @@ function playRound(playerChoice, computerChoice) {
             addChildIcon(scissorsChoiceIndicator, playerIcon);
             addChildIcon(paperChoiceIndicator, computerIcon);
             break;
-        case playerChoice === "scissors" && computerChoice === "scissors":
+        case playerChoice === 'scissors' && computerChoice === 'scissors':
             resultNotification.textContent = random(roundDrawMessages);
             setAlertWarning(resultNotification);
             resetEachInnerHTML(choiceIndicators);
