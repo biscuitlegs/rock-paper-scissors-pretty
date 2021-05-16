@@ -1,4 +1,4 @@
-const buttons = document.querySelectorAll('.player-choice-btn');
+const playerChoiceButtons = document.querySelectorAll('.player-choice-btn');
 const playerScore = document.querySelector('#player-score');
 const computerScore = document.querySelector('#computer-score');
 const resultNotification = document.querySelector('#result-notification');
@@ -11,10 +11,13 @@ const scissorsChoiceIndicator = document.querySelector('#scissors-choice-indicat
 const choiceIndicators = [rockChoiceIndicator, paperChoiceIndicator, scissorsChoiceIndicator];
 const computerIcon = '<i class="bi bi-cpu-fill"></i>';
 const playerIcon = '<i class="bi bi-person-fill"></i>';
+const resetButton = document.querySelector('#reset-btn');
 
-buttons.forEach(button => button.addEventListener('click', () => {
+playerChoiceButtons.forEach(button => button.addEventListener('click', () => {
     playRound(button.id, random(["rock", "paper", "scissors"]));
 }));
+
+resetButton.addEventListener('click', resetScores);
 
 function random(array) {
     randomNumber = Math.floor(Math.random() * 3);
@@ -49,6 +52,11 @@ function removeChildIcon(parent) {
 
 function resetEachInnerHTML(array) {
     array.forEach(element => element.innerHTML = '');
+}
+
+function resetScores() {
+    playerScore.textContent = "0";
+    computerScore.textContent = "0";
 }
 
 function playRound(playerChoice, computerChoice) {
