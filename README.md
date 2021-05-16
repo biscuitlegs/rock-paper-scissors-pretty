@@ -1,5 +1,7 @@
 # Rock Paper Scissors Pretty
 
+## [Play it here!](https://biscuitlegs.github.io/rock-paper-scissors-pretty/)
+
 ## About
 * A pretty rock paper scissors game made with HTML CSS and JavaScript.
 * A human player plays against a computer opponent.
